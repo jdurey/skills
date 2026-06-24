@@ -13,6 +13,13 @@ Each folder is one skill. A skill is just a `SKILL.md`, which is YAML frontmatte
 | [adversarial-harden](./adversarial-harden) | Hardens code you can't fully trust by having rival AI model families try to break it, then integrating the fixes by severity. |
 | [divergent-solve](./divergent-solve) | Cracks a stuck problem by fanning the same brief out to rival model families in parallel, then verifying every fix against an objective pass/fail gate. |
 | [witness](./witness) | Turns a heavy task into a self-verifying loop: define done as a list of runnable checks, freeze it, then keep going until every check passes with captured proof. |
+| [ai-proof](./ai-proof) | Strips the tells that make AI writing sound generic: a deterministic linter for the mechanical slop, plus a judgment pass for the rhythm a script can't see. |
+| [prompt-architect](./prompt-architect) | Turns a big, fuzzy task into a tight spec an AI can execute faithfully: goal, explicit scope, worked examples, a definition-of-done with a built-in self-check, and HALT conditions. |
+| [forge](./forge) | A premise-first ideation engine: validate an idea against live demand before designing it, then generate and stress-test across genuinely independent model families. |
+| [scope-first](./scope-first) | Runs a short intake pass before any real task, restating the goal, surfacing ambiguity, and laying out a lean plan, so effort never goes into building the wrong thing well. |
+| [voice-profile](./voice-profile) | Captures your authentic writing voice as a reusable rules document pulled from your own writing, then applies it as context so AI drafts sound like you. |
+| [heavy-task-planner](./heavy-task-planner) | Forces an efficiency-first planning pass before any heavy build: challenge the framing, compress to an MVP, ground a cost estimate, then write the plan before executing. |
+| [grill-me](./grill-me) | Has the AI interview you about your own plan one question at a time, checkpointing every answer to a file, to surface the gaps before you commit. |
 
 ## Install any skill
 
