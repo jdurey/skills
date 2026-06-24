@@ -4,15 +4,15 @@ A skill for the problems one AI can't crack: throw rival model families at it in
 
 ## The problem it solves
 
-I can't really code. So when something breaks, I have AI debug it. Most of the time that's fine. But every so often I hit a problem that one model just can't beat. It gives me a fix, swears it works, and it doesn't. So I ask again. It finds a new root cause, just as confident, just as wrong. One model has one blind spot, and it will defend that blind spot all day.
+I can't really code. So when something breaks, I have AI debug it. Most of the time that's fine. But every so often I hit a problem that one model just can't beat. It gives me a fix, swears it works, and it doesn't. So I ask again, and it produces a brand new root cause with exactly the same confidence as the last wrong one. One model has one blind spot, and it will defend that blind spot all day.
 
 I lost a whole session to this once. The model locked onto a wrong cause, twice, before the real evidence came in.
 
-So now, when a problem starts fighting me, I stop asking one model harder. I write down a pass/fail test first, something a machine can check with no opinion involved. Then I hand the exact same problem to a few different model families at once and let them work it in parallel. They were trained differently, so they fail differently, and the one that disagrees with the others is often the one that's right.
+So now, when a problem starts fighting me, I stop asking one model harder. I write down a pass/fail test first, something a machine can check with no opinion involved. Then I hand the exact same problem to a few different model families at once and let them work it in parallel. Because they were trained on different data, they tend to get stuck in different places, and the one that disagrees with the others is often the one that's right.
 
 Then I trust none of them. I run every proposed fix through my own test, from a clean start, reading the actual logs instead of the model's summary. A model will tell you it passed by ignoring the part that failed. The test doesn't let it.
 
-The fix I keep is the one that passes the test in front of me, not the one that sounds the most sure.
+I keep whichever fix actually passes the test in front of me, no matter how sure the others sounded.
 
 ## How it works
 

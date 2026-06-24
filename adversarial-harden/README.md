@@ -8,7 +8,7 @@ I can't really code. So when I need software built, I have AI write it. The hard
 
 So I stopped asking it to grade itself.
 
-When a piece of code actually matters, a bug in it that would leak data or let something through that shouldn't, I hand the same code to a few rival model families and tell each one to break it. Their only job is to attack it, and they have to prove the break by running it, not by guessing. A model checking its own work shares its own blind spots. A different family of model is a real outsider.
+When a piece of code actually matters, a bug in it that would leak data or let something through that shouldn't, I hand the same code to a few rival model families and tell each one to break it. Their only job is to attack it, and they have to prove the break by actually running it. A model checking its own work shares its own blind spots, and a different family of model is enough of an outsider to find them.
 
 The first time I ran this, one model had already cleared a security hole in code it called clean. A different model caught it on the first try. Same code, same prompt. The only thing that changed was who was looking.
 
