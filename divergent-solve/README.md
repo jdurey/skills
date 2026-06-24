@@ -4,15 +4,13 @@ A skill for the problems one AI can't crack: throw rival model families at it in
 
 ## The problem it solves
 
-I can't really code. So when something breaks, I have AI debug it. Most of the time that's fine. But every so often I hit a problem that one model just can't beat. It gives me a fix, swears it works, and it doesn't. So I ask again, and it produces a brand new root cause with exactly the same confidence as the last wrong one. One model has one blind spot, and it will defend that blind spot all day.
+I can't really code, so when something breaks I get an AI to fix it. Most of the time that's enough. But every so often I run into a problem a single model simply can't solve, and the real trouble is that it won't concede the point. It hands me a confident fix and declares the matter closed, and the fix doesn't work. So I ask again, and it produces an entirely different explanation, delivered with the same certainty as the wrong one before it.
 
-I lost a whole session to this once. The model locked onto a wrong cause, twice, before the real evidence came in.
+The underlying problem is that one model has essentially one way of being wrong. It will defend that blind spot indefinitely, no matter how many times I push back.
 
-So now, when a problem starts fighting me, I stop asking one model harder. I write down a pass/fail test first, something a machine can check with no opinion involved. Then I hand the exact same problem to a few different model families at once and let them work it in parallel. Because they were trained on different data, they tend to get stuck in different places, and the one that disagrees with the others is often the one that's right.
+So I stopped leaning harder on a single model. I write a small, objective test that a computer can score, so the result comes back as an unambiguous pass or fail. Then I hand the identical problem to three different model families at once and let each one work it independently. Because they were trained by different labs on different data, they rarely get stuck in the same place. The model that breaks from the consensus is, surprisingly often, the one that turns out to be right.
 
-Then I trust none of them. I run every proposed fix through my own test, from a clean start, reading the actual logs instead of the model's summary. A model will tell you it passed by ignoring the part that failed. The test doesn't let it.
-
-I keep whichever fix actually passes the test in front of me, no matter how sure the others sounded.
+I don't take any of them at their word. Every proposed fix gets run through the test on a clean machine, and the raw output matters more than the model's cheerful summary of it. A model will gladly announce success while omitting the one line that proves it failed. The test is the only authority worth trusting.
 
 ## How it works
 
