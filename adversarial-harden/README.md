@@ -24,9 +24,21 @@ It's a **build → harden → integrate** loop:
 
 See [`SKILL.md`](./SKILL.md) for the full method, including a standing threat checklist for new code surfaces.
 
-## Using it
+## Install
 
-This is a skill in the [Claude Code / Claude Agent SDK](https://docs.claude.com/en/docs/claude-code) format. Drop the folder into your skills directory and your agent can invoke it. The method is model-agnostic, so you can adapt the fan-out to whatever CLIs or model families you have.
+A skill is just a folder with a `SKILL.md` (YAML frontmatter plus plain-markdown instructions). Any coding agent that loads markdown skills can use it, so this is tool-agnostic. Run the one-liner from inside your agent's skills directory:
+
+```sh
+curl -fsSL https://github.com/jdurey/skills/tarball/main | tar -xz && mv jdurey-skills-*/adversarial-harden . && rm -rf jdurey-skills-*
+```
+
+That drops an `adversarial-harden/` folder in the current directory. Where "your skills directory" is depends on your tool:
+
+- **Claude Code** → `~/.claude/skills/` (or `.claude/skills/` in a project)
+- **Claude Agent SDK** → wherever you point the skills loader
+- **Anything else** → the folder your agent reads skills from, or just keep the `SKILL.md` handy and paste it in as a system instruction
+
+No build step, no dependencies. It's a markdown file.
 
 ## Why it's public
 
