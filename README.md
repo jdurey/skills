@@ -11,6 +11,7 @@ Each folder is one skill. A skill is just a `SKILL.md`, which is YAML frontmatte
 | Skill | What it does |
 |---|---|
 | [adversarial-harden](./adversarial-harden) | Hardens code you can't fully trust by having rival AI model families try to break it, then integrating the fixes by severity. |
+| [divergent-solve](./divergent-solve) | Cracks a stuck problem by fanning the same brief out to rival model families in parallel, then verifying every fix against an objective pass/fail gate. |
 
 ## Install any skill
 
