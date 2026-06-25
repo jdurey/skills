@@ -1,0 +1,10 @@
+[
+  {
+    "id": "your-item-id",
+    "standard": "e.g. 4.His.4 (optional label)",
+    "objective": "what the item is meant to measure",
+    "stem": "the question exactly as the student sees it",
+    "options": { "a": "option A", "b": "option B", "c": "option C", "d": "option D" },
+    "key": "a"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "claude": { "cmd": ["claude", "-p", "{prompt}"], "family": "anthropic", "enabled": true },
+
+  "_comment": "Add models you want on the cross-family panel below. Set enabled:true once the command is correct for your machine. 'family' groups same-lab models so they don't count as independent votes. Use 'stdin': true if the CLI reads the prompt from stdin instead of an argument. Keep API keys in the ENVIRONMENT, never in this file. The panel auto-detects which enabled backends actually resolve on this box; unreachable ones are skipped.",
+
+  "openai":  { "cmd": ["<your-openai-cli>",  "-p", "{prompt}"], "family": "openai",  "enabled": false },
+  "xai":     { "cmd": ["<your-grok-cli>",    "-p", "{prompt}"], "family": "xai",     "enabled": false },
+  "google":  { "cmd": ["<your-gemini-cli>",  "-p", "{prompt}"], "family": "google",  "enabled": false }
+}

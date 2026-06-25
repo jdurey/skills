@@ -1,0 +1,80 @@
+[
+  {
+    "id": "clean-1",
+    "standard": "4.Civ.5",
+    "objective": "Identify the role of the legislative branch.",
+    "stem": "What is the main job of the legislative branch of the U.S. government?",
+    "options": {
+      "a": "To make the laws.",
+      "b": "To decide in court whether laws are fair.",
+      "c": "To lead the army as commander.",
+      "d": "To run the public schools in each town."
+    },
+    "key": "a"
+  },
+  {
+    "id": "clean-2",
+    "standard": "4.Econ.4",
+    "objective": "Explain how scarcity and demand affect price.",
+    "stem": "A toy store has only a few of a popular toy, but many kids want it. What will most likely happen to the price?",
+    "options": {
+      "a": "The price will go up.",
+      "b": "The price will go down.",
+      "c": "The price will stay exactly the same.",
+      "d": "The store will close for the day."
+    },
+    "key": "a"
+  },
+  {
+    "id": "defect-distractor-not-misconception-1",
+    "standard": "4.His.4",
+    "objective": "Explain why European explorers sailed to the Americas.",
+    "stem": "Why did European explorers sail to the Americas in the 1400s and 1500s?",
+    "options": {
+      "a": "To find new trade routes and resources.",
+      "b": "Because they enjoyed swimming in the ocean.",
+      "c": "To watch movies in a new theater.",
+      "d": "Because their phones told them to."
+    },
+    "key": "a"
+  },
+  {
+    "id": "defect-keylen-cue-1",
+    "standard": "4.His.6",
+    "objective": "Explain a cause of colonial anger before the Revolution.",
+    "stem": "Why were many colonists upset with Britain before the American Revolution?",
+    "options": {
+      "a": "They were taxed by the British government without having any elected representatives in Parliament to speak for them or their interests.",
+      "b": "They wanted warmer weather.",
+      "c": "They disliked long ships.",
+      "d": "They needed more maps."
+    },
+    "key": "a"
+  },
+  {
+    "id": "defect-grammar-cue-1",
+    "standard": "4.Geo.6",
+    "objective": "Define lines of latitude.",
+    "stem": "Lines that run east and west and measure distance north or south of the equator are called ___.",
+    "options": {
+      "a": "lines of latitude.",
+      "b": "a globe.",
+      "c": "the compass.",
+      "d": "a map key."
+    },
+    "key": "a"
+  },
+  {
+    "id": "novel-stem-telegraph-1",
+    "standard": "4.His.1",
+    "objective": "Read a timeline.",
+    "stem": "A timeline lists events in the order they happened, from earliest to latest. Where on a timeline do you find the earliest event?",
+    "options": {
+      "a": "At the beginning.",
+      "b": "At the end.",
+      "c": "In the middle.",
+      "d": "It is not shown."
+    },
+    "key": "a"
+  }
+]
