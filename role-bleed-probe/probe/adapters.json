@@ -1,0 +1,40 @@
+{
+  "note": "How to invoke each agent CLI. {PROMPT}/{WORKDIR}/{TURNS}/{HOME} are substituted at runtime. 'cmd' is the first/single-shot invocation; 'continue_cmd' is how you continue the SAME session in a later turn (multi-turn driver) — leave null if the CLI has no session-continuation flag. 'reasoning' selects which captured stream carries the chain-of-thought to score. 'cwd':true runs the agent inside the throwaway WORKDIR. 'model_name' is appended to the self_naming_3p marker so you catch THIS model naming itself in the third person. CRITICAL CAVEAT — 'reasoning_fidelity': models do NOT expose reasoning equally, so cross-MODEL leak-rate comparison is CONFOUNDED (a higher rate may just mean you can see more of that model's reasoning). The clean, defensible result is the WITHIN-model paired deltas. Verify each binary + its flags on your own machine before trusting the template; only adapters with enabled:true are dispatched.",
+  "adapters": {
+    "grok": {
+      "cmd": ["grok", "-p", "{PROMPT}", "--max-turns", "{TURNS}", "--always-approve"],
+      "continue_cmd": ["grok", "-c", "-p", "{PROMPT}", "--max-turns", "{TURNS}", "--always-approve"],
+      "cwd": true,
+      "model_name": "Grok",
+      "check_flag": "--check",
+      "reasoning": "both",
+      "reasoning_fidelity": "high — grok emits a verbose reasoning trace. For the FULL thought channel use --output-format streaming-json and score type:thought events; the plain -p stream can hide the dissociation (harness-validity gate).",
+      "multiturn_capable": true,
+      "enabled": true,
+      "note": "Assumes 'grok' is on your PATH. If your install puts it elsewhere (e.g. ~/.grok/bin/grok), update 'cmd'/'continue_cmd' to the full path or add it to PATH before running."
+    },
+    "codex": {
+      "cmd": ["codex", "exec", "-s", "workspace-write", "--skip-git-repo-check",
+              "-o", "{WORKDIR}/_codex_final.md", "{PROMPT}"],
+      "continue_cmd": null,
+      "cwd": true,
+      "model_name": "Codex",
+      "reasoning": "both",
+      "reasoning_fidelity": "medium — codex emits reasoning SUMMARIES, not raw CoT; leakage will be UNDER-counted relative to a full-trace model. Try `--json` for richer reasoning events.",
+      "multiturn_capable": false,
+      "enabled": true,
+      "verified": "codex exec -o writes the final message; trace goes to combined stdout+stderr. cwd set to WORKDIR; stdin=/dev/null applied by runner. No documented single-flag session-continue for exec mode — set continue_cmd if your version supports one."
+    },
+    "gemini": {
+      "cmd": ["agy", "-p", "{PROMPT}"],
+      "continue_cmd": null,
+      "cwd": true,
+      "model_name": "Gemini",
+      "reasoning": "stdout",
+      "reasoning_fidelity": "low — agy -p print mode exposes little/no reasoning and is NON-AGENTIC (no tool layer). Use as a loose reasoning-only control, NOT a like-for-like agent. File-task conditions will not exercise tools.",
+      "multiturn_capable": false,
+      "enabled": true,
+      "verified": "agy -p prints the response to stdout. No separate reasoning stream."
+    }
+  }
+}

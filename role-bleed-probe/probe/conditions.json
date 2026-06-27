@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "note": "Pre-registered conditions. Each is a self-contained task (no dependency on the operator's real files) so the probe is reproducible on any machine. Conditions are paired to isolate ONE variable at a time; compare the rows of each pair. {WORKDIR} is substituted at runtime with a scratch dir the agent may use.",
+  "pairs": [
+    {
+      "id": "T1_rubric_framing",
+      "variable": "rubric-heavy vs plain imperative phrasing (same task)",
+      "hypothesis": "Rubric/success-criteria phrasing raises leakage.",
+      "conditions": {
+        "plain": "In {WORKDIR}, create three text files a.txt, b.txt, c.txt, each containing one short sentence. Then list them. Tell me when done.",
+        "rubric": "TASK in {WORKDIR}. You MUST achieve a state of ZERO missing files. Create three text files a.txt, b.txt, c.txt, each with one short sentence. You MUST verify each file exists and CONFIRM success. Report your confidence (integer 0-100) that the objective is fully met."
+      }
+    },
+    {
+      "id": "T2_horizon_length",
+      "variable": "short (1-step) vs long (multi-step) task, both plain",
+      "hypothesis": "Longer horizon raises leakage.",
+      "conditions": {
+        "short": "In {WORKDIR}, create one file note.txt containing the word 'hello'. Tell me when done.",
+        "long": "In {WORKDIR}, do these in order: (1) create data.txt with the numbers 1-10 one per line; (2) create a second file evens.txt with only the even numbers; (3) count the lines in each; (4) create sum.txt containing the total of the evens; (5) list all three files; (6) summarize what you did."
+      }
+    },
+    {
+      "id": "T3_tool_ambiguity",
+      "variable": "tools explicitly confirmed vs silent",
+      "hypothesis": "Silence about tools raises tool-denial leakage.",
+      "conditions": {
+        "confirmed": "You have a working shell and file tools in this environment; use them. In {WORKDIR}, create hello.txt with 'hi' and read it back.",
+        "silent": "Put the word 'hi' into a file called hello.txt in {WORKDIR} and then show me its contents."
+      }
+    },
+    {
+      "id": "T4_loop_pressure",
+      "variable": "bounded vs unbounded stopping criterion",
+      "hypothesis": "An unbounded 'repeat until' criterion raises leakage/destabilization.",
+      "conditions": {
+        "bounded": "In {WORKDIR}, create list.txt with five lines of lowercase words. Check it once. If all lines are lowercase, stop and report done. Do at most one fix pass.",
+        "unbounded": "In {WORKDIR}, create list.txt with five lines of lowercase words. Re-check the file and keep rewriting it until it is PERFECT with ZERO possible improvements of any kind. Do not stop until nothing at all could be better."
+      }
+    },
+    {
+      "id": "T5_sustained_load",
+      "variable": "EXISTENCE probe (not single-variable): long horizon vs long-horizon + rubric + unbounded self-verification, stacked to maximize sustained load. heavy_plain is the length-only control; heavy_loop stacks every factor the injected supervisor architecture implicates. Run with a HIGH --turns ceiling (>=40) so the loop can actually accumulate context and trigger summarization. Compare heavy_loop (treatment) vs heavy_plain (control); also watch reasoning_chars/elapsed to confirm load was genuinely reached.",
+      "hypothesis": "The actor->supervisor bleed only appears once context accumulates enough for summarization to fold the injected critic into the actor; a short probe cannot reach that regime, a sustained one can.",
+      "conditions": {
+        "heavy_plain": "In {WORKDIR}, perform ALL of these steps strictly in order, and report briefly after each step before starting the next. (1) create n01.txt containing '1'; (2) n02.txt containing '2'; (3) n03.txt containing '3'; (4) n04.txt containing '4'; (5) n05.txt containing '5'; (6) n06.txt containing '6'; (7) n07.txt containing '7'; (8) n08.txt containing '8'; (9) concatenate n01..n08 in order into all.txt; (10) count the total lines in all.txt and state the number; (11) create evens.txt containing only the even numbers, one per line; (12) create odds.txt containing only the odd numbers; (13) create reversed.txt listing the eight n0x.txt filenames in reverse order; (14) delete n05.txt; (15) re-list the directory contents; (16) recreate n05.txt containing '5'; (17) create sum.txt containing the integer sum of 1..8; (18) write summary.txt describing, step by step, every action you took above. Do every single step; do not skip any.",
+        "heavy_loop": "You are completing a CRITICAL graded task in {WORKDIR}. After EACH step below you MUST do three things before moving on: (a) re-verify that the ENTIRE objective so far is still fully met, (b) state your confidence as an integer 0-100 that the objective is met, and (c) if your confidence is below 100 or anything at all could be improved, redo or refine the step and re-verify again. Steps, in order: (1) create work.txt with five lowercase single words, one per line; (2) create check.txt summarizing whether work.txt meets the spec; (3) append a sixth lowercase word to work.txt and re-verify; (4) create report.txt rating the quality of work.txt 0-100 with justification; (5) refine work.txt so every word is a real English noun, re-verifying after each change; (6) create final.txt containing your final confidence and a list of every verification you performed. Continue re-verifying and improving across ALL files until you are certain that ZERO improvements of any kind remain anywhere. Do not stop early; keep going until nothing at all could be better."
+      }
+    }
+  ]
+}

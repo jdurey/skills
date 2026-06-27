@@ -1,0 +1,5 @@
+The uncomfortable lesson from a year of building evals: the tools
+that ship the BEST internal discipline can break it by putting it in the wrong place.
+A model can run a proper skeptic panel and still have that panel bleed into the agent
+it was meant to check. Good idea, wrong wiring. The lesson generalizes: isolation
+between the thing acting and the thing judging is not optional, it is the design.

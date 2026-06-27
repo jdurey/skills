@@ -21,6 +21,7 @@ Each folder is one skill. A skill is just a `SKILL.md`, which is YAML frontmatte
 | [heavy-task-planner](./heavy-task-planner) | Forces an efficiency-first planning pass before any heavy build: challenge the framing, compress to an MVP, ground a cost estimate, then write the plan before executing. |
 | [grill-me](./grill-me) | Has the AI interview you about your own plan one question at a time, checkpointing every answer to a file, to surface the gaps before you commit. |
 | [construct-validity-screen](./construct-validity-screen) | A runnable tool that predicts which multiple-choice questions won't separate students who know the material from those who don't, before any student sees them, then hands its loud flags to a cross-family panel so only what the models agree on counts as high confidence. |
+| [role-bleed-probe](./role-bleed-probe) | A runnable tool that measures how readily an AI agent's reasoning trace slips into narrating its own internal critic, denying its tools, scoring itself, or naming itself in the third person, while it is actively using those tools. It turns that anecdote into a pre-registered monitor-faithfulness rate with frozen detectors and paired controls. |
 
 ## Install any skill
 

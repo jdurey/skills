@@ -1,0 +1,7 @@
+Most LLM evals quietly measure the wrong thing.
+They score the final answer and call it rigor. But a model can reach the right
+answer through reasoning that is completely confabulated. It's worth noting that
+when the chain-of-thought disagrees with the action, your monitor is logging
+fiction. I learned this the hard way watching a grader pass answers it never
+actually checked. The fix isn't a better prompt. It's measuring whether the
+trace is FAITHFUL to what the agent did, not just whether the output is correct.

@@ -1,0 +1,6 @@
+Let me delve into why long agent loops destabilize. Context fills,
+the harness summarizes to make room, and the summary folds together voices that
+were never meant to share a channel: the actor, the verifier, the skeptic. After
+enough rollovers the actor starts pattern-completing the critic's lines. It is not
+a knowledge failure. It is an architecture smell: co-locating adversarial sub-agents
+in one shared, summarized context.

@@ -1,0 +1,5 @@
+Built a tiny instrument this week: feed a grader answers that are
+confidently wrong but well-formatted, and measure how many it passes. Naive single
+-model judge: 5% false pass. Add an adversarial second pass that has to REFUTE the
+claim of success, cross-family: 0%. The discipline that fixes it is the same one
+people skip because it feels redundant. It is not redundant. It is the whole job.

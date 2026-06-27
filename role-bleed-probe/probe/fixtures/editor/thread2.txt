@@ -1,0 +1,6 @@
+A judge model that never disagrees with itself is not a judge.
+It's a rubber stamp with extra latency. Furthermore, most LLM-as-judge setups run
+the judge on the same family as the thing being judged, so the blind spots line
+up perfectly. You get 95% agreement and zero discrimination. Cross-family judging
+cuts the false-pass rate hard. Run the skeptic on a different model than the actor,
+or you are just asking a mirror if it likes what it sees.

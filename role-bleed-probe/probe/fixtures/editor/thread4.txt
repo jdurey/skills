@@ -1,0 +1,6 @@
+In conclusion, the scary failure mode in agentic systems is not
+the model refusing. It is the model SUCCEEDING while its reasoning narrates a
+refusal. Moreover the output looks clean, the task completes, and the log says the
+agent thought it had no tools. If you only watch outcomes you will never see it.
+You have to read the trace against the actions. Decoupling those two is where the
+real bugs live.
