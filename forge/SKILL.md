@@ -45,13 +45,27 @@ of this pattern, not requirements.
 ## Phase 0a -- Gate your own premise before dispatch
 
 The panel will faithfully answer whatever premise you hand it, including a false assumption you
-built in. Before writing the prompt, audit the premise itself:
+built in. Prose intentions aren't enough — a bad premise that reads fine costs a full cross-model
+cycle you can't get back. So write the premise as one literal sentence and run it through this
+checklist. If any check fails, fix the framing; do not dispatch.
 
-- Strip unearned givens. Does the framing assume credentials, an existing audience, prior
+```
+PREMISE: <one literal sentence: what is being forged, for whom, with what assets, on what substrate>
+```
+
+- **Preserve the literal ask.** Does the premise forge the thing that was *literally* asked for, or
+  did you widen it into an adjacent generic goal? "Innovative uses of this specific tool" is not
+  "any productivity win"; "this product's edge" is not "growth in general." If you generalized the
+  ask, you've already lost the signal. Keep the literal noun. When unsure, echo the one-line premise
+  back and get a yes before spending the dispatch — one cheap line beats a wasted cycle.
+- **Verify the substrate, don't assume it.** Any tool, machine, account, quota, or install the
+  premise *depends on* must be confirmed with an actual check (run the command, hit the endpoint,
+  check the quota), never assumed. Feasibility reasoning built on an assumed substrate flips the
+  moment the assumption is wrong — verify the box before deciding what runs on it.
+- **Strip unearned givens.** Does the framing assume credentials, an existing audience, prior
   relationships, capital, or resources the actual operator does not have? Name only what is
-  genuinely in hand and exclude the rest explicitly in the prompt as auto-KILL constraints.
-- State hard constraints as auto-KILL gates in the prompt, not as soft preferences: "any path
-  requiring X is a KILL," where X names each unearned given.
+  genuinely in hand, and state each unearned given as an auto-KILL gate in the prompt — "any path
+  requiring X is a KILL" — not as a soft preference.
 
 Garbage premise in, garbage survivors out. The gate in Phase 0 does not catch a flawed framing;
 only this step does.
