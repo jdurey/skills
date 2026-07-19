@@ -21,6 +21,7 @@ It's a **build → harden → integrate** loop:
 3. **Get a structured, severity-ranked return**, worst-first, with the exact input, observed vs. expected, and a one-line fix.
 4. **Integrate by severity**, and add a regression test for each fix that fails before and passes after.
 5. **Re-verify** by re-running the suite and the reviewers' own attacks against the fixed code.
+6. **Simplify** what the fixes dragged in. Hardening tends to leave defensive bloat behind, so a final diff-scoped pass strips redundant guards, and the regression tests decide what stays.
 
 See [`SKILL.md`](./SKILL.md) for the full method, including a standing threat checklist for new code surfaces.
 

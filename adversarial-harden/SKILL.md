@@ -40,10 +40,13 @@ Give each adversary a **distinct angle** so they don't overlap:
 Each reviewer returns a **ranked, deduped list, worst-first**, capped (~10–12) so you get signal not noise. Per finding: exact scenario/input, observed vs. expected, **severity** (CRITICAL for any leak/breach/auth-bypass · high · med · low), one-line root cause, one-line fix. Plus a one-line verdict (SAFE / NEEDS-FIX). Terse — it feeds your integration, it isn't an essay.
 
 ### 4. Integrate by severity — you are the integrator
-Triage all findings together (the reviewers are blind to each other; you dedupe and resolve conflicts). Fix **CRITICAL and high first**; for each fix, **add a regression test that fails before and passes after** — the test is what makes the hardening durable instead of a one-time cleanup. Accept low-severity findings consciously, and say why if you're not fixing one. Resolve cross-reviewer tension explicitly (e.g. a concurrency reviewer wanting WAL vs. a security reviewer warning WAL sidecars carry bytes next to a secret DB → keep DELETE journaling and document why).
+Triage all findings together (the reviewers are blind to each other; you dedupe and resolve conflicts). Fix **CRITICAL and high first**; for each fix, **add a regression test that fails before and passes after** — the test is what makes the hardening durable instead of a one-time cleanup. **When the artifact is a prompt, judge, or rubric rather than code, the regression test is an eval case** (promptfoo or similar) added to the artifact's eval config and run at high N — a single-shot pass on a nondeterministic grader proves nothing. Accept low-severity findings consciously, and say why if you're not fixing one. Resolve cross-reviewer tension explicitly (e.g. a concurrency reviewer wanting WAL vs. a security reviewer warning WAL sidecars carry bytes next to a secret DB → keep DELETE journaling and document why).
 
 ### 5. Re-verify and record
 Re-run the full test suite. Re-run the reviewers' own adversarial inputs against the fixed code to confirm the breaks are closed. Briefly record what was found and fixed so the next change knows the threat model.
+
+### 6. Simplification pass (code artifacts only)
+Harden fixes are where defensive bloat creeps in — redundant guards, over-broad try/except, a config knob for a value that never changes. After step 5 passes, run a diff-scoped over-engineering review on the changes the fixes introduced and strip what isn't earning its keep, then **re-run the regression tests from step 4** so no simplification silently reopens a closed break. The tests are the boundary: a simplification that fails one is rejected, not argued with. Keep this pass diff-scoped — a whole-repo cleanup is a different job and doesn't belong in a hardening loop.
 
 ## A standing threat checklist (start here, don't stop here)
 
@@ -59,4 +62,4 @@ The checklist is a prior, not a substitute — the reviewers exist to find what 
 
 ## How to run the fan-out
 
-If you have CLIs for multiple model families, dispatch the same brief to each in parallel and collect their findings. If you only have one model available, the weak substitute is a single model running multiple *diverse-lens* reviewer passes — better than nothing, but a real second family is the asset, because independence is the whole point.
+If you have CLIs for multiple model families, dispatch the same brief to each in parallel and collect their findings. API-only models (e.g. via OpenRouter) can join as **static review lanes** — they can't run sandboxed repros, so treat their findings as hypotheses until an agentic lane reproduces them; they still earn their seat by spotting gap classes the agentic pair clears. If you only have one model available, the weak substitute is a single model running multiple *diverse-lens* reviewer passes — better than nothing, but a real second family is the asset, because independence is the whole point.
