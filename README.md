@@ -13,6 +13,7 @@ Each folder is one skill. A skill is just a `SKILL.md`, which is YAML frontmatte
 | [adversarial-harden](./adversarial-harden) | Hardens code you can't fully trust by having rival AI model families try to break it, then integrating the fixes by severity. |
 | [divergent-solve](./divergent-solve) | Cracks a stuck problem by fanning the same brief out to rival model families in parallel, then verifying every fix against an objective pass/fail gate. |
 | [witness](./witness) | Turns a heavy task into a self-verifying loop: define done as a list of runnable checks, freeze it, then keep going until every check passes with captured proof. |
+| [gate-canaries](./gate-canaries) | Ships a small canary suite beside any LLM gate — must-refuse cases, a prompt-injection probe, and an over-refusal guard — run against the real gate prompt, never a copy. |
 | [ai-proof](./ai-proof) | Strips the tells that make AI writing sound generic: a deterministic linter for the mechanical slop, plus a judgment pass for the rhythm a script can't see. |
 | [prompt-architect](./prompt-architect) | Turns a big, fuzzy task into a tight spec an AI can execute faithfully: goal, explicit scope, worked examples, a definition-of-done with a built-in self-check, and HALT conditions. |
 | [forge](./forge) | A premise-first ideation engine: validate an idea against live demand before designing it, then generate and stress-test across genuinely independent model families. |
